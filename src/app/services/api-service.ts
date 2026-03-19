@@ -32,6 +32,16 @@ export class ApiService {
         start: new Date(b.date),
         title: b.name
       }));
-    });``
+    }); ``
+  }
+
+  dashboard() {
+    this.http.get('http://localhost:5000/api/dashboard', {
+      headers: {
+        Authorization: localStorage.getItem('token') || ''
+      }
+    }).subscribe(res => {
+      console.log(res);
+    });
   }
 }

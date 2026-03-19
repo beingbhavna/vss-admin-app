@@ -17,7 +17,7 @@ email='';
 constructor(private apiService : ApiService){}
 
 ngOnInit(){
-  this.login();
+  // this.login();
 }
 
   login() {
@@ -26,6 +26,7 @@ ngOnInit(){
       password: this.password
     }).subscribe((res: any) => {
       this.apiService.token = res.token;
+      localStorage.setItem('token', res.token);
     });
   }
 }
