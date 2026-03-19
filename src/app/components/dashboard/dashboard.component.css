@@ -1,0 +1,30 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+}
+
+.card span {
+  display: block;
+  font-size: 28px;
+  margin-top: 10px;
+}
+
+.blue { background: #3b82f6; }
+.green { background: #22c55e; }
+.orange { background: #f59e0b; }
+.red { background: #ef4444; }
+
+.charts {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}

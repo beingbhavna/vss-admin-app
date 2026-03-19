@@ -1,0 +1,43 @@
+<h2>Leads</h2>
+
+<div class="filters">
+  <input placeholder="Search..." [(ngModel)]="search">
+  <select [(ngModel)]="status">
+    <option value="">All</option>
+    <option>New</option>
+    <option>Contacted</option>
+    <option>Closed</option>
+  </select>
+</div>
+
+<table class="table">
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Service</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+<tr *ngFor="let l of leads">
+<td>{{l.name}}</td>
+<td>{{l.phone}}</td>
+<td>{{l.service}}</td>
+  <td>
+    <button (click)="logCall(l)">📞 Call</button>
+  </td>
+<td>
+<select [(ngModel)]="l.status" (change)="update(l)">
+<option>New</option>
+<option>Contacted</option>
+<option>Closed</option>
+</select>
+</td>
+
+<td>
+<a [href]="'https://wa.me/91'+l.phone" target="_blank">
+💬 WhatsApp
+</a>
+</td>
+</tr>
+</table>

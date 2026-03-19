@@ -1,0 +1,34 @@
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">⚡ VSS CRM</div>
+
+    <nav>
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/leads" routerLinkActive="active">Leads</a>
+      <a routerLink="/calendar" routerLinkActive="active">Calendar</a>
+      <a routerLink="/reports" routerLinkActive="active">Reports</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <input type="text" placeholder="Search leads..." />
+
+      <div class="user">
+        <span>Admin</span>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

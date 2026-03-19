@@ -1,0 +1,37 @@
+<!-- <h2>CRM Dashboard</h2>
+
+<canvas id="chart"></canvas>
+
+<table>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+<th>Status</th>
+</tr>
+
+<tr *ngFor="let l of leads">
+<td>{{l.name}}</td>
+<td>{{l.phone}}</td>
+<td>
+<select [(ngModel)]="l.status" (change)="update(l)">
+<option>New</option>
+<option>Contacted</option>
+<option>Closed</option>
+</select>
+</td>
+</tr>
+</table> -->
+
+
+<h2>Dashboard</h2>
+
+<div class="cards">
+  <div class="card blue">Total Leads <span>{{total}}</span></div>
+  <div class="card green">Contacted <span>{{contacted}}</span></div>
+  <div class="card orange">Pending <span>{{new}}</span></div>
+  <div class="card red">Closed <span>{{closed}}</span></div>
+</div>
+
+<div class="charts">
+  <canvas id="barChart"></canvas>
+</div>

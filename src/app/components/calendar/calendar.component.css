@@ -1,0 +1,22 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.day {
+  padding: 20px;
+  background: #f1f5f9;
+  text-align: center;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+::ng-deep .cal-month-view {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+}
