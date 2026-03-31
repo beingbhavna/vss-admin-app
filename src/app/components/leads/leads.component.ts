@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ApiService } from '../../services/api-service';
 @Component({
   selector: 'app-leads',
   standalone: true,
@@ -15,12 +16,19 @@ export class LeadsComponent {
 
   search = '';
   status = '';
+  constructor(private apiService: ApiService) { }
 
   update(l: any) {
     console.log('Updated', l);
   }
 
   logCall(lead: any) {
-    alert("Call logged for " + lead.name);
+    this.apiService.logCall(lead).subscribe(res => {
+
+    });
+  }
+
+  filteredLeads() {
+    return this.leads.filter(l =>(!this.search || l.name.includes(this.search)) && (!this.status || l.status === this.status));
   }
 }

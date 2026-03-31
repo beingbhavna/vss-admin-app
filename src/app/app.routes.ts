@@ -12,14 +12,16 @@ export const routes: Routes = [
 
     {
         path: '',
-        // canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
 
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'leads', component: LeadsComponent },
-            { path: 'calendar', component: CalendarComponent }
+            { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+            { path: 'leads', component: LeadsComponent, data: { title: 'Leads' } },
+            { path: 'calendar', component: CalendarComponent, data: { title: 'Calendar' } }
 
         ]
-    }
+    },
+
+    { path: '**', redirectTo: 'dashboard' }
 
 ];

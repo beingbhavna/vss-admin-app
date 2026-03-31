@@ -1,23 +1,22 @@
 <div class="app-layout">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar" *ngIf="showLayout">
     <div class="logo">⚡ VSS CRM</div>
 
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
       <a routerLink="/leads" routerLinkActive="active">Leads</a>
       <a routerLink="/calendar" routerLinkActive="active">Calendar</a>
-      <a routerLink="/reports" routerLinkActive="active">Reports</a>
     </nav>
   </aside>
 
   <!-- MAIN -->
-  <div class="main">
+  <div class="main" [class.expanded]="!showLayout">
 
     <!-- TOPBAR -->
-    <header class="topbar">
-      <input type="text" placeholder="Search leads..." />
+    <header class="topbar" *ngIf="showLayout">
+      <input type="text" placeholder="Search leads..." aria-label="Search leads" />
 
       <div class="user">
         <span>Admin</span>

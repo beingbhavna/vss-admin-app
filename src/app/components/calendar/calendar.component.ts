@@ -32,9 +32,17 @@ export class CalendarComponent {
     }
   ];
 
+  get upcomingEvents(): CalendarEvent[] {
+    const now = new Date(this.viewDate);
+    return this.events.filter((evt) => {
+      const startDate = new Date(evt.start as Date);
+      return startDate >= now;
+    });
+  }
+
   // Add booking
   addBooking(date: Date) {
-    const name = prompt("Enter Lead Name");
+    const name = prompt('Enter Lead Name');
 
     if (!name) return;
 

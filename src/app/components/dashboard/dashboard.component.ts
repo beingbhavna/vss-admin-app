@@ -16,6 +16,24 @@ export class DashboardComponent implements OnInit {
   new = 0;
   contacted = 0;
   closed = 0;
+  chartData = {
+    labels: ['New', 'Contacted', 'Closed'],
+    datasets: [
+      {
+        data: [12, 19, 7],
+        label: 'Leads'
+      }
+    ]
+  };
+
+  chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: true
+      }
+    }
+  };
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {

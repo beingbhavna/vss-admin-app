@@ -15,15 +15,11 @@ export class ApiService {
   }
 
   getLeads() {
-    return this.http.get(this.api + '/leads', {
-      headers: { Authorization: this.token }
-    });
+    return this.http.get(this.api + '/leads');
   }
 
   updateStatus(id: any, status: string) {
-    return this.http.put(this.api + '/leads/' + id, { status }, {
-      headers: { Authorization: this.token }
-    });
+    return this.http.put(this.api + '/leads/' + id, { status });
   }
 
   booking() {
@@ -32,7 +28,7 @@ export class ApiService {
         start: new Date(b.date),
         title: b.name
       }));
-    }); ``
+    });
   }
 
   dashboard() {
@@ -43,5 +39,14 @@ export class ApiService {
     }).subscribe(res => {
       console.log(res);
     });
+  }
+  
+    logCall(data: any) {
+    const payload = {
+      leadId: data._id,
+      notes: 'Customer contacted',
+      status: 'Contacted'
+    }
+    return this.http.post(this.api + '/api/calls', payload);
   }
 }

@@ -1,17 +1,37 @@
-<h2>Schedule</h2>
+<section class="calendar-page">
+  <header class="calendar-head">
+    <h2>📅 Appointment Calendar</h2>
+    <p>Click any date to add a booking for a lead.</p>
+  </header>
 
-<!-- <mwl-calendar-month-view [viewDate]="viewDate"></mwl-calendar-month-view> -->
-
-<div class="calendar">
-  <div *ngFor="let day of days" class="day">
-    {{day}}
+  <div class="calendar-top-cards">
+    <article>
+      <h3>{{ events.length }}</h3>
+      <p>Active events</p>
+    </article>
+    <article>
+      <h3>{{ days.length }}</h3>
+      <p>Days this month</p>
+    </article>
+    <article>
+      <h3>{{ upcomingEvents.length }}</h3>
+      <p>Upcoming events</p>
+    </article>
   </div>
-</div>
 
-<h2>📅 Appointment Calendar</h2>
+  <div class="calendar-view">
+    <mwl-calendar-month-view
+      [viewDate]="viewDate"
+      [events]="events"
+      (dayClicked)="addBooking($event.day.date)">
+    </mwl-calendar-month-view>
+  </div>
 
-<mwl-calendar-month-view
-  [viewDate]="viewDate"
-  [events]="events"
-  (dayClicked)="addBooking($event.day.date)">
-</mwl-calendar-month-view>
+  <div class="event-list" *ngIf="events.length > 0">
+    <h3>Upcoming Appointments</h3>
+    <div class="event-item" *ngFor="let event of events">
+      <strong>{{ event.title }}</strong>
+      <span>{{ event.start | date:'mediumDate' }}</span>
+    </div>
+  </div>
+</section>
