@@ -11,21 +11,21 @@
 </div>
 
 <table class="table">
+<thead>
 <tr>
 <th>Name</th>
 <th>Phone</th>
 <th>Service</th>
 <th>Status</th>
-<th>Action</th>
+<th>Actions</th>
+<th>Chat</th>
 </tr>
-
-<tr *ngFor="let l of leads">
+</thead>
+<tbody>
+<tr *ngFor="let l of filteredLeads()">
 <td>{{l.name}}</td>
 <td>{{l.phone}}</td>
 <td>{{l.service}}</td>
-  <td>
-    <button (click)="logCall(l)">📞 Call</button>
-  </td>
 <td>
 <select [(ngModel)]="l.status" (change)="update(l)">
 <option>New</option>
@@ -33,11 +33,15 @@
 <option>Closed</option>
 </select>
 </td>
-
 <td>
-<a [href]="'https://wa.me/91'+l.phone" target="_blank">
-💬 WhatsApp
-</a>
+<button (click)="logCall(l)">📞 Log Call</button>
+</td>
+<td>
+<a [href]="'https://wa.me/91'+l.phone" target="_blank">💬 WhatsApp</a>
 </td>
 </tr>
+<tr *ngIf="filteredLeads().length === 0">
+<td colspan="6" class="empty">No leads found. Adjust search or status filter.</td>
+</tr>
+</tbody>
 </table>

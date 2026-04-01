@@ -40,9 +40,15 @@ export class LeadsComponent implements OnInit {
   }
 
   filteredLeads() {
-    return this.leads.filter(l =>
-      (!this.search || l.name.toLowerCase().includes(this.search.toLowerCase())) &&
-      (!this.status || l.status === this.status)
-    );
+    const query = this.search.trim().toLowerCase();
+    return this.leads.filter(l => {
+      const matchesSearch = !query ||
+        l.name?.toLowerCase().includes(query) ||
+        l.phone?.toLowerCase().includes(query) ||
+        l.service?.toLowerCase().includes(query) ||
+        l.status?.toLowerCase().includes(query);
+      const matchesStatus = !this.status || l.status === this.status;
+      return matchesSearch && matchesStatus;
+    });
   }
 }
