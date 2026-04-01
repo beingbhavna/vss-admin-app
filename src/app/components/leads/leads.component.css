@@ -1,23 +1,86 @@
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  min-width: 220px;
+}
+
 .table {
   width: 100%;
-  background: white;
-  border-radius: 10px;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.table th {
-  background: #1e293b;
-  color: white;
-  padding: 12px;
-}
-
+.table th,
 .table td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.filters {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+.table th {
+  background: #f1f5f9;
+  color: #1f2937;
+}
+
+.table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.table button,
+.table a {
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+  padding: 7px 10px;
+  border-radius: 7px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.table button:hover,
+.table a:hover {
+  background: #2563eb;
+}
+
+@media (max-width: 800px) {
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block;
+  }
+  .table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  .table tr { margin-bottom: 10px; }
+  .table td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+  .table td:before {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    white-space: nowrap;
+    font-weight: 700;
+  }
+  .table td:nth-of-type(1):before { content: "Name"; }
+  .table td:nth-of-type(2):before { content: "Phone"; }
+  .table td:nth-of-type(3):before { content: "Service"; }
+  .table td:nth-of-type(4):before { content: "Status"; }
+  .table td:nth-of-type(5):before { content: "Action"; }
+  .table td:nth-of-type(6):before { content: "Chat"; }
 }

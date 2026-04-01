@@ -1,0 +1,12 @@
+<h2>Calls</h2>
+
+<div class="calls-list">
+  <div *ngIf="calls.length === 0" class="empty">No calls found.</div>
+  <div *ngFor="let call of calls" class="call-card">
+    <h3>{{call.lead?.name || call.contact}}</h3>
+    <p><strong>Date: </strong>{{call.date | date:'short'}}</p>
+    <p><strong>Status: </strong>{{call.status}}</p>
+    <p><strong>Notes: </strong>{{call.notes}}</p>
+    <button (click)="markCompleted(call)" [disabled]="call.status==='Completed'">Mark Completed</button>
+  </div>
+</div>

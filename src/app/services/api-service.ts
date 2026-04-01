@@ -31,22 +31,32 @@ export class ApiService {
     });
   }
 
-  dashboard() {
-    this.http.get('http://localhost:5000/api/dashboard', {
+  getDashboard() {
+    return this.http.get(this.api + '/dashboard', {
       headers: {
         Authorization: localStorage.getItem('token') || ''
       }
-    }).subscribe(res => {
-      console.log(res);
     });
   }
-  
-    logCall(data: any) {
+
+  getCalls() {
+    return this.http.get(this.api + '/calls');
+  }
+
+  completeCall(id: any) {
+    return this.http.patch(this.api + '/calls/' + id, { status: 'Completed' });
+  }
+
+  getUsers() {
+    return this.http.get(this.api + '/users');
+  }
+
+  logCall(data: any) {
     const payload = {
       leadId: data._id,
       notes: 'Customer contacted',
       status: 'Contacted'
-    }
-    return this.http.post(this.api + '/api/calls', payload);
+    };
+    return this.http.post(this.api + '/calls', payload);
   }
 }

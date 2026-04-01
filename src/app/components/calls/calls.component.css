@@ -1,0 +1,23 @@
+.calls-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+.call-card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.call-card h3 { margin: 0 0 8px; }
+.call-card button {
+  margin-top: 10px;
+  border: none;
+  background: #10b981;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.call-card button:disabled { background: #94a3b8; cursor: not-allowed; }
+.empty { color: #475569; }
